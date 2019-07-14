@@ -38,12 +38,12 @@ class App extends React.Component {
         const GIPHY_API_URL = 'https://api.giphy.com';
         const GIPHY_PUB_KEY = '097ZgDDfAyrqjnu6orPBhkwwB7uv517y';
         const url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;  
-        var xhr = new XMLHttpRequest();  
+        const xhr = new XMLHttpRequest();  
         xhr.open('GET', url);
         xhr.onload = function() {
             if (xhr.status === 200) {
-               var data = JSON.parse(xhr.responseText).data; 
-                var gif = {  
+                const data = JSON.parse(xhr.responseText).data; 
+                const gif = {  
                     url: data.fixed_width_downsampled_url,
                     sourceUrl: data.url
                 };
@@ -60,15 +60,16 @@ class App extends React.Component {
             textAlign: 'center',
             width: '90%'
         }
+        const {loading, gif} = this.state;
         return (
             <div style={styles}>
                 <h1>Wyszukiwarka GIFow!</h1>
                 <p>Znajdź gifa na <a href='http://giphy.com'>giphy</a>. Naciskaj enter, aby pobrać kolejne gify.</p>
                 <Search onSearch={this.handleSearch}/>
                 <Gif
-                    loading={this.state.loading}
-                    url={this.state.gif.url}
-                    sourceUrl={this.state.gif.sourceUrl}/>
+                    loading={loading}
+                    url={gif.url}
+                    sourceUrl={gif.sourceUrl}/>
             </div>
           );
     };
