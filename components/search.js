@@ -1,10 +1,11 @@
-class Search extends React.component {
-    getInitialState() {
-        return {
-          searchingText: ''
-        };
+class Search extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            searchingText: '',
+        }
     };
-    handleChange(event) {
+    handleChange = (event) => {
         let searchingText = event.target.value;
         this.setState({
             searchingText: searchingText

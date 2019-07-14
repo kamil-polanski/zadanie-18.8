@@ -4,7 +4,7 @@ const styles = {
   margin: '0.5em'
 };
 
-class Gif extends React.component {
+class Gif extends React.Component {
     geturl() {
         return this.props.sourceUrl || GIPHY_LOADING_URL;
     }
@@ -12,7 +12,7 @@ class Gif extends React.component {
         const url = this.props.loading ? GIPHY_LOADING_URL : this.props.url;
         return (
             <div style={styles}>
-              <a href={this.getUrl()} title='view this on giphy' target='new'>
+              <a href={this.getUrl} title='view this on giphy' target='new'>
                 <img id='gif' src={url} style={{width: '100%', maxWidth: '350px'}}/>
               </a>
             </div>
